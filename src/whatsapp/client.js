@@ -22,7 +22,3 @@ client.on('qr', (qr) => {
 client.on('message', async (message) => {
     await handeMessage(message);
 })
-
-// client.on('message_create', async (message) => {
-//     await handeMessage(message);
-// })
