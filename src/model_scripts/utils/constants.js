@@ -3,6 +3,9 @@ export const MAX_WORDS_NGRAMMS = 40
 export const MAX_NGRAMMS = 20000
 export const SENTENCE_NUMBER = 1
 
+export const NB_ENTITIES = 10;
+export const PAD_ENTITY = 9;
+
 export const INTENTIONS = {
     travel_search: 0,
     price_request: 1,
@@ -17,10 +20,17 @@ export const ENTITIES = {
     "I-DES": 4,
     "B-DATE": 5,
     "I-DATE": 6,
-    PAD: 7
+    "B-TYPE": 7,
+    "I-TYPE": 8,
+    PAD: 9
 };
 
-
+export const BUS_TYPE = {
+    unknown: 0,
+    vip: 1,
+    premium: 2,
+    lite: 3
+}
 
 
 export const ID_STATION = {
