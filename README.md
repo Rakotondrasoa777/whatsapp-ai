@@ -132,3 +132,7 @@ Pour tester directement le modele et effectuer une prediction, utilisez le scrip
     prediction/predict.js
 
 Ce script permet de verifier rapidement le fonctionnement du modele et observer les resultats de ses predictions
+
+### Modèle à utiliser
+
+Utilisez toujours la dernière version du modèle disponible.
