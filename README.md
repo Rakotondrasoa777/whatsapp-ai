@@ -12,29 +12,29 @@ Exemple:
 
                 ou
 
-    Combien coute ce trajet
+    Combien coute le trajet majunga antananarivo
 
 Le modèle analyse automatiquement le message afin d'identifier les informations nécessaires à la recherche, notamment :
 
-[Les entités](#entite) :  
+Les entités:  
 📍 le lieu de départ (Departure)  
 📍 la destination (Destination)  
 📅 la date du voyage (Date)  
 
-[Les intentions](#intention) :  
+Les intentions:  
 🔎 recherche de voyage (`travel_search`)  
 💰 demande de prix (`price_request`)
 
 ##### Autre fonctionnalite:
-Toutefois , le modele detecte aussi le [trait](#trait) "greetings" et la langue utilise par l'utilisateur (francais(fr) ou malagasy(mg)).
+Toutefois , le modele detecte aussi le trait "greetings" et la langue utilise par l'utilisateur (francais(fr) ou malagasy(mg)).
 
 ### Fonctionnement general:
 ```mermaid
 flowchart TD
     A[Utilisateur] --> B[WhatsApp]
     B --> C[Envoie de message]
-    C --> D[Analyse et traitement du message par le modele]
-    D --> E[Traitement du message traiter par le modele]
+    C --> D[Analyse et traitement du message par le modele - Prediction]
+    D --> E[Traitement du message predit]
     E --> F[Envoie de la reponse]
 ```
 
@@ -47,6 +47,12 @@ npm install
 ```
 
 Une fois l'installation terminée, démarrez le projet avec :
+
+```bash
+npm start
+```
+
+Si le qr code ne s'affiche pas, reessayer avec : 
 
 ```bash
 node index.js
@@ -63,11 +69,13 @@ Pour connecter le compte WhatsApp utilisé par l'application :
 
 Une fois le compte connecté, l'application peut recevoir les messages envoyés à ce compte et y répondre automatiquement à l'aide du système d'intelligence artificielle.
 
-> **Remarque :** le compte WhatsApp qui scanne le QR Code devient le compte utilisé par l'application pour recevoir et envoyer les messages.
+> **Remarque 1:** le compte WhatsApp qui scanne le QR Code devient le compte utilisé par l'application pour recevoir et envoyer les messages.
+> **Remarque 2:** Creer un fichier .env a la racine de votre projet et mettez-y tout ce qui se trouve dans le fichier 
+ .env.template et remplace les valeurs.
 
 ## Documentation d'utilisation de Cap.ai
 
-**Cap.ai** est le modèle d'intelligence artificielle utilisé par l'application. Il est fourni au format **`.onnx`**, ce qui permet de l'utiliser avec différentes technologies compatibles avec ONNX, notamment **JavaScript**.
+**Cap.ai** est le modèle d'intelligence artificielle utilisé par le projet. Il est fourni au format **`.onnx`**, ce qui permet de l'utiliser avec différentes technologies compatibles avec ONNX, notamment **JavaScript**.
 
 ### Structure du modèle
 
@@ -117,5 +125,10 @@ Elles permettent :
 
 Ainsi, **Cap.ai peut être utilisé indépendamment de WhatsApp**. Les dépendances WhatsApp sont uniquement nécessaires lorsque le modèle est intégré au système de messagerie.
 
+### Prediction
 
+Pour tester directement le modele et effectuer une prediction, utilisez le script :
 
+    prediction/predict.js
+
+Ce script permet de verifier rapidement le fonctionnement du modele et observer les resultats de ses predictions
