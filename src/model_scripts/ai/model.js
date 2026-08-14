@@ -13,7 +13,7 @@ export async function loadModel() {
         return session;
     }
 
-    const modelPath = path.join(__dirname, "../../models/V1/V1.3/Cap.ai.onnx")
+    const modelPath = path.join(__dirname, "../../models/V1/V1.4/Cap.ai.onnx")
 
     session = await ort.InferenceSession.create(
         modelPath
