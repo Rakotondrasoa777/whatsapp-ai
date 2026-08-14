@@ -11,8 +11,12 @@ export function parseDate(text){
     const classifiedTokens = classify(tokens);    
     const datetime = execute(classifiedTokens);
 
-    return datetime;
+    const [datePart, time] = datetime.toLocaleString("fr-FR").split(" ");
+    const [day, month, year] = datePart.split("/");
+
+    return {
+        date: `${year}-${month}-${day}`,
+        time
+    }
 
 }
-
-console.log(parseDate("20 janvier a 15H").toLocaleString("fr-FR"));
