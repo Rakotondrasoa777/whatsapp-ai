@@ -1,12 +1,10 @@
 import {
-    REVERSE_ENTITIES
+    REVERSE_ENTITIES,
+    NB_ENTITIES,
+    PAD_ENTITY
 } from "../utils/constants.js";
 
 import { cleanEntity } from "../utils/cleanEntity.js";
-
-
-const NB_ENTITIES = 8;
-const PAD_ENTITY = 7;
 
 
 const getBestIndex = (predictions) => {
@@ -46,7 +44,8 @@ const extractEntities = (words, predictions) => {
     const entities = {
         departure: [],
         destination: [],
-        date: []
+        date: [],
+        bustype: []
     };
 
     for (let wordIndex = 0; wordIndex < words.length; wordIndex++) {
@@ -74,6 +73,9 @@ const extractEntities = (words, predictions) => {
         }
         else if (tagName.includes("DATE")) {
             entities.date.push(word);
+        }
+        else if (tagName.includes("TYPE")) {
+            entities.bustype.push(word)
         }
     }
 

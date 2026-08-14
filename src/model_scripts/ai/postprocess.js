@@ -2,10 +2,12 @@ import {
     REVERSE_INTENTIONS,
     REVERSE_LANGUAGE,
     REVERSE_TRAITS,
-    ID_STATION
+    ID_STATION,
+    BUS_TYPE
 } from "../utils/constants.js";
 
 import { normalizeStation } from "../utils/normalizeStation.js";
+import { normalizeBusType } from "../utils/normalizeBusType.js";
 import { parseDate } from "../dateparser/index.js";
 
 import {
@@ -39,7 +41,6 @@ export function postprocess(sentence, outputs) {
         predEntities
     );
 
-
     let departure = normalizeStation(
         entities.departure.join(" ")
     );
@@ -53,6 +54,12 @@ export function postprocess(sentence, outputs) {
     );
 
     const date = entities.date.join(" ");
+
+    const validDate = parseDate(date)
+
+    const bustype = normalizeBusType(
+        entities.bustype.join(" ")
+    )
 
     return {
         text: sentence,
@@ -70,7 +77,11 @@ export function postprocess(sentence, outputs) {
             },
             datetime: {
                 body: date,
-                values: parseDate(date).toLocaleString("fr-FR")
+                values: validDate.date
+            },
+            bustype: {
+                id: BUS_TYPE[bustype],
+                body: bustype
             }
         },
         language: {
